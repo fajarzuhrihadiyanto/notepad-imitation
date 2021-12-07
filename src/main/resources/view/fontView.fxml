@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<GridPane hgap="8.0" vgap="8.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.controllers.FontController">
+   <columnConstraints>
+      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+   </columnConstraints>
+   <rowConstraints>
+      <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+      <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+      <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+   </rowConstraints>
+   <children>
+      <VBox>
+         <children>
+            <Label text="Font Family" />
+            <ListView fx:id="fontFamilyChooser" prefHeight="200.0" prefWidth="200.0" />
+         </children>
+      </VBox>
+      <VBox layoutX="10.0" layoutY="10.0" GridPane.columnIndex="1">
+         <children>
+            <Label text="Font Style" />
+            <ListView fx:id="fontStyleChooser" prefHeight="200.0" prefWidth="200.0" />
+         </children>
+      </VBox>
+      <VBox layoutX="10.0" layoutY="10.0" GridPane.columnIndex="2">
+         <children>
+            <Label text="Font Size" />
+            <ListView fx:id="fontSizeChooser" prefHeight="200.0" prefWidth="200.0" />
+         </children>
+      </VBox>
+      <AnchorPane fx:id="area" prefHeight="50.0" GridPane.columnSpan="2147483647" GridPane.rowIndex="1">
+         <children>
+            <Label fx:id="sampleText" alignment="CENTER" contentDisplay="CENTER" prefHeight="50.0" prefWidth="393.0" styleClass="text-area-light" stylesheets="@../stylesheet/main.css" text="The quick brown fox jumps over the lazy dog" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+         </children>
+      </AnchorPane>
+      <FlowPane GridPane.columnSpan="2" GridPane.rowIndex="2">
+         <children>
+            <Label text="theme :" />
+            <RadioButton fx:id="lightModeBtn" mnemonicParsing="false" text="Light">
+               <FlowPane.margin>
+                  <Insets left="16.0" right="16.0" />
+               </FlowPane.margin>
+            </RadioButton>
+            <RadioButton fx:id="darkModeBtn" mnemonicParsing="false" text="Dark" />
+         </children>
+      </FlowPane>
+      <FlowPane prefWidth="50.0" GridPane.columnIndex="2" GridPane.rowIndex="2">
+         <children>
+            <Button fx:id="okBtn" mnemonicParsing="false" text="OK" />
+            <Button fx:id="cancelBtn" mnemonicParsing="false" text="Cancel">
+               <FlowPane.margin>
+                  <Insets left="16.0" />
+               </FlowPane.margin></Button>
+         </children>
+      </FlowPane>
+   </children>
+   <padding>
+      <Insets bottom="16.0" left="16.0" right="16.0" top="16.0" />
+   </padding>
+</GridPane>
