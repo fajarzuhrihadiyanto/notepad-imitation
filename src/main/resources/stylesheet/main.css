@@ -1,0 +1,21 @@
+.text-area {
+    -fx-background-insets: 0;
+}
+
+.text-area-light {
+    -fx-text-fill: black;
+    -fx-background-color: white;
+}
+
+.text-area-light .content {
+    -fx-background-color: white;
+}
+
+.text-area-dark {
+    -fx-text-fill: white;
+    -fx-background-color: black;
+}
+
+.text-area-dark .content {
+    -fx-background-color: black;
+}

@@ -7,13 +7,12 @@
 
 <BorderPane fx:id="parent" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.controllers.MainController">
    <center>
-      <TextArea fx:id="textArea" prefHeight="200.0" prefWidth="600.0" style="-fx-focus-color: -fx-control-inner-background; -fx-faint-focus-color: -fx-control-inner-background; -fx-text-box-border: -fx-control-inner-background; -fx-background-insets: 0; -fx-background-color: transparent, white, transparent, white; -fx-background-radius: 0, 0, 0, 0; -fx-box-border: none; -fx-border-width: -1;" wrapText="true" BorderPane.alignment="CENTER" />
+      <TextArea fx:id="textArea" prefHeight="200.0" prefWidth="600.0" styleClass="text-area-light" stylesheets="@../stylesheet/main.css" wrapText="true" BorderPane.alignment="CENTER" />
    </center>
    <bottom>
       <FlowPane fx:id="statusBar" alignment="CENTER_RIGHT" hgap="10.0" minHeight="0.0" prefHeight="30.0" prefWidth="200.0" style="-fx-border-width: 1; -fx-border-color: #cccccc;" BorderPane.alignment="CENTER">
          <children>
-            <Label text="Line x, Col y" />
-            <Label text="100%" />
+            <Label fx:id="zoomLabel" text="100%" />
          </children>
          <padding>
             <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
@@ -63,17 +62,6 @@
           </Menu>
           <Menu mnemonicParsing="false" text="Edit">
                <items>
-                  <MenuItem fx:id="menuItemUndo" mnemonicParsing="false" text="Undo">
-                     <accelerator>
-                        <KeyCodeCombination alt="UP" code="Z" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
-                     </accelerator>
-                  </MenuItem>
-                  <MenuItem fx:id="menuItemRedo" mnemonicParsing="false" text="Redo">
-                     <accelerator>
-                        <KeyCodeCombination alt="UP" code="Y" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
-                     </accelerator>
-                  </MenuItem>
-                  <SeparatorMenuItem mnemonicParsing="false" />
                   <MenuItem fx:id="menuItemCut" mnemonicParsing="false" text="Cut">
                      <accelerator>
                         <KeyCodeCombination alt="UP" code="X" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
