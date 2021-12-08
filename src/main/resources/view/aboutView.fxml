@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx/11.0.2">
+   <children>
+      <Label text="Aplikasi notepad Ini merupakan final projek dari mata kuliah Pemrograman berorientasi objek 2021, yang beranggotakan :" />
+      <Label text="Fajar Zuhri Hadiyanto 5025201248" />
+      <Label text="Muhammad Ghani Taufiqurrahman Atmaja 5025201110" />
+      <Label text="Vania Rizky Juliana Wachid 5025201215" />
+      <Label text="Rafiqi Rachmat 5025201067" />
+   </children>
+   <padding>
+      <Insets bottom="16.0" left="16.0" right="16.0" top="16.0" />
+   </padding>
+</VBox>

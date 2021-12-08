@@ -598,11 +598,50 @@ public class MainController implements Initializable {
     }
 
     private void viewMenuHandler() {
+        menuItemStatusBar.selectedProperty().addListener((observable, oldValue, newValue) -> {
+            statusBar.setVisible(newValue);
+            statusBar.setMaxHeight(newValue ? statusBar.getPrefHeight() : 0);
+        });
 
+        menuItemZoomIn.setOnAction(event -> {
+            double currentZoom = model.getSettingsModel().getZoom();
+            double nextZoom = currentZoom + 0.1;
+            model.getSettingsModel().setZoom(Math.min(2, nextZoom));
+        });
+
+        menuItemZoomOut.setOnAction(event -> {
+            double currentZoom = model.getSettingsModel().getZoom();
+            double nextZoom = currentZoom - 0.1;
+            model.getSettingsModel().setZoom(Math.max(nextZoom, 0.5));
+        });
+
+        menuItemRestoreZoom.setOnAction(event -> {
+            model.getSettingsModel().setZoom(1);
+        });
     }
 
     private void helpMenuHandler() {
+        menuItemAbout.setOnAction(event -> {
+            try {
+                if (aboutStage == null) {
+                    aboutStage = new Stage();
+                    aboutStage.setTitle("About");
+                    aboutStage.setScene(new Scene(aboutLoader.getRoot()));
+                }
 
+                if (!aboutStage.isShowing()) {
+                    aboutStage.show();
+                } else {
+                    aboutStage.requestFocus();
+                }
+
+                if (findStage != null) findStage.close();
+                if (findReplaceStage != null) findReplaceStage.close();
+                if (fontStage != null) fontStage.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        });
     }
 
     private void updateUI() {
