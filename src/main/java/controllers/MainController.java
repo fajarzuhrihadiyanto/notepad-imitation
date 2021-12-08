@@ -570,7 +570,31 @@ public class MainController implements Initializable {
     }
 
     private void formatMenuHandler() {
+        menuItemWordWrap.selectedProperty().addListener((observable, oldValue, newValue) -> {
+            textArea.setWrapText(newValue);
+        });
 
+        menuItemFont.setOnAction(event -> {
+            try {
+                if (fontStage == null) {
+                    fontStage = new Stage();
+                    fontStage.setTitle("Font");
+                    fontStage.setScene(new Scene(fontLoader.getRoot()));
+                }
+
+                if (!fontStage.isShowing()) {
+                    fontStage.show();
+                } else {
+                    fontStage.requestFocus();
+                }
+
+                if (findStage != null) findStage.close();
+                if (findReplaceStage != null) findReplaceStage.close();
+                if (aboutStage != null) aboutStage.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        });
     }
 
     private void viewMenuHandler() {
