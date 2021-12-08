@@ -296,9 +296,7 @@ public class MainController implements Initializable {
                 int foundIndex = area.indexOf(word, anchor);
                 int caret = foundIndex + word.length();
 
-                if (foundIndex != -1) {
-                    textArea.selectRange(foundIndex, caret);
-                }
+                if (foundIndex != -1) textArea.selectRange(foundIndex, caret);
             });
 
             findReplaceController.getReplaceAllButton().setOnMouseClicked(event -> {
@@ -495,7 +493,80 @@ public class MainController implements Initializable {
     }
 
     private void editMenuHandler() {
+        menuItemCut.setOnAction(event -> {
+            Clipboard clipboard = Clipboard.getSystemClipboard();
+            ClipboardContent clipboardContent = new ClipboardContent();
+            clipboardContent.putString(textArea.getSelectedText());
+            clipboard.setContent(clipboardContent);
 
+            textArea.replaceSelection("");
+        });
+
+        menuItemCopy.setOnAction(event -> {
+            Clipboard clipboard = Clipboard.getSystemClipboard();
+            ClipboardContent clipboardContent = new ClipboardContent();
+            clipboardContent.putString(textArea.getSelectedText());
+            clipboard.setContent(clipboardContent);
+        });
+
+        menuItemPaste.setOnAction(event -> {
+            Clipboard clipboard = Clipboard.getSystemClipboard();
+            String stringClipboard = clipboard.getContent(DataFormat.PLAIN_TEXT).toString();
+            textArea.replaceSelection(stringClipboard);
+        });
+
+        menuItemDelete.setOnAction(event -> textArea.replaceSelection(""));
+
+        menuItemFind.setOnAction(event -> {
+            try {
+                if (findStage == null) {
+                    findStage = new Stage();
+                    findStage.setTitle("Find");
+                    findStage.setScene(new Scene(findLoader.getRoot()));
+                }
+
+                if (!findStage.isShowing()) {
+                    findStage.show();
+                } else {
+                    findStage.requestFocus();
+                }
+
+                if (findReplaceStage != null) findReplaceStage.close();
+                if (fontStage != null) fontStage.close();
+                if (aboutStage != null) aboutStage.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        });
+
+        menuItemFindReplace.setOnAction(event -> {
+            try {
+                if (findReplaceStage == null) {
+                    findReplaceStage = new Stage();
+                    findReplaceStage.setTitle("Find and Replace");
+                    findReplaceStage.setScene(new Scene(findReplaceLoader.getRoot()));
+                }
+
+                if (!findReplaceStage.isShowing()) {
+                    findReplaceStage.show();
+                } else {
+                    findReplaceStage.requestFocus();
+                }
+
+                if (findStage != null) findStage.close();
+                if (fontStage != null) fontStage.close();
+                if (aboutStage != null) aboutStage.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        });
+
+        menuItemSelectAll.setOnAction(event -> textArea.selectAll());
+
+        menuItemTimeDate.setOnAction(event -> {
+            SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+            textArea.replaceSelection(formatter.format(new Date()));
+        });
     }
 
     private void formatMenuHandler() {
